@@ -62,13 +62,13 @@ public class TodoController {
 	public Todo save(@RequestBody Todo todo) {
 		//PostMapping인데 뒤에 경로없으면 똑같은 경로
 		//@RequestBod - 클라이언트에서 보낸값을 Todo의 필드와 맵핑해서 객체 형태로
-		return todoService.save(todo);
+		return todoservice.save(todo);
 			
 	}
 	
 	@PutMapping
 	public List<Todo> update(@RequestBody Todo todo){
-		return todoService.update(todo);
+		return todoservice.update(todo);
 	}
 	
 	
