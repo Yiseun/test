@@ -1,0 +1,81 @@
+.loginBackground {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)),
+    url("https://www.kagoshima-kankou.com/storage/tourism_themes/12/responsive_images/ElwnvZ2u5uZda7Pjcwlk4mMtr08kLNydT8zXA6Ie__1673_1115.jpeg");
+  background-size: cover;
+}
+
+.loginContainer{
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 40px 55px 40px 55px;
+  border-radius: 30px;
+}
+
+.loginWrapper{
+  align-items: center;
+}
+
+.loginTitleIcon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginTitleContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginTitle {
+  font-size: 50px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginButton {
+  margin-top: 20px;
+  background-color: lightcoral;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.loginRegisterButton {
+  background-color: none;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.topLine{
+  height: 2px;
+  width: 55px;
+  display: block;
+  margin: 20px auto 0;
+  background-color: lightcoral;
+}
+
+.underLine{
+  height: 2px;
+  width: 150px;
+  display: block;
+  margin: 30px auto 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.otherLogin{
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}

@@ -1,9 +1,5 @@
-# tone-java-none
-sdfsdfs
-
-
-2022-06-13 김도현 테스트
-
-2.test 브랜치 생성
-3.pull request 도전
-4. 도전
+### 홈 화면
+`큰 화면`
+![image](https://user-images.githubusercontent.com/98632452/186355512-c7a7b476-4730-4904-9360-503eda215c7c.png)
+`작은 화면`
+![image](https://user-images.githubusercontent.com/98632452/186355813-ff432085-7e4e-4ce0-9988-5addcb58062b.png)

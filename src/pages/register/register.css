@@ -1,0 +1,51 @@
+.registerBackground {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)),
+    url("https://content.presspage.com/uploads/685/1920_2lsquorelaxuryrsquo.jpg?10000");
+  background-size: cover;
+}
+
+.registerContainer{
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 30px 65px 30px 65px;
+  border-radius: 30px;
+}
+
+.registerWrapper{
+  align-items: center;
+}
+
+.registerTitleIcon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerTitleContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registerTitle {
+  font-size: 45px;
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.registerButton {
+  margin-top: 50px;
+  background-color: teal;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
