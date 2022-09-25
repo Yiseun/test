@@ -1,32 +1,35 @@
+body {
+  /* background: linear-gradient(rgba(137, 135, 135, 0.5), rgba(78, 76, 76, 0.5)),
+    url("https://www.kagoshima-kankou.com/storage/tourism_themes/12/responsive_images/ElwnvZ2u5uZda7Pjcwlk4mMtr08kLNydT8zXA6Ie__1673_1115.jpeg"); */
+  background-size: 100%;
+  margin: 0;
+  padding: 0;
+}
 .loginBackground {
   height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)),
-    url("https://www.kagoshima-kankou.com/storage/tourism_themes/12/responsive_images/ElwnvZ2u5uZda7Pjcwlk4mMtr08kLNydT8zXA6Ie__1673_1115.jpeg");
-  background-size: cover;
 }
-
-.loginContainer{
+/* 
+.loginContainer {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 40px 55px 40px 55px;
   border-radius: 30px;
-}
+} */
 
-.loginWrapper{
+.loginWrapper {
   align-items: center;
 }
 
-.loginTitleIcon{
+.loginTitleIcon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.loginTitleContainer{
+.loginTitleContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,15 +44,6 @@
   flex-direction: column;
 }
 
-.loginButton {
-  margin-top: 20px;
-  background-color: lightcoral;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
-}
-
 .loginRegisterButton {
   background-color: none;
   cursor: pointer;
@@ -58,7 +52,7 @@
   border-radius: 10px;
 }
 
-.topLine{
+.topLine {
   height: 2px;
   width: 55px;
   display: block;
@@ -66,7 +60,7 @@
   background-color: lightcoral;
 }
 
-.underLine{
+.underLine {
   height: 2px;
   width: 150px;
   display: block;
@@ -74,7 +68,7 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.otherLogin{
+.otherLogin {
   display: flex;
   /* align-items: center; */
   justify-content: center;

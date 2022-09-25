@@ -3,9 +3,18 @@ import "./register.css";
 import Footer from "../../components/footer/Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, Container, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { Assignment } from "@mui/icons-material";
 import Header from "../../components/header/Header";
+import LeftSide from "./LeftSide";
+import { BASE_URL } from "../../baseUrl";
 
 export default function Register() {
   // navigatge
@@ -28,7 +37,7 @@ export default function Register() {
   function userSignIn() {
     axios
       .post(
-        "http://localhost:8080/user",
+        BASE_URL + "/all/v1/register",
         {
           username: userId,
           password: password,
@@ -78,87 +87,126 @@ export default function Register() {
   // };
 
   return (
-    <Container maxWidth="lg">
+    <>
       <Header />
-      <div className="registerBackground">
-        <div className="registerContainer">
-          <div className="registerWrapper">
-            <div className="registerTitleIcon">
-              <Assignment
-                fontSize="large"
-                color="disabled"
-                className="registerIcon"
-              />
-            </div>
-            <div className="registerTitleContainer">
-              <span className="registerTitle">Register</span>
-            </div>
-            <div className="topLine"></div>
-            <form className="registerForm">
-              {/* user 서식 */}
-              <TextField
-                id="standard-basic"
-                label="아이디"
-                variant="standard"
-                margin="normal"
-                size="small"
-                onChange={(e) => {
-                  setUserId(e.target.value);
-                }}
-              />
-              <TextField
-                id="standard-basic"
-                label="닉네임"
-                variant="standard"
-                margin="normal"
-                size="small"
-                onChange={(e) => {
-                  setUserNickname(e.target.value);
-                }}
-              />
-              <TextField
-                id="standard-basic"
-                label="이메일"
-                variant="standard"
-                margin="normal"
-                size="small"
-                type="email"
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-              <TextField
-                id="standard-basic"
-                label="비밀번호"
-                variant="standard"
-                margin="normal"
-                size="small"
-                type="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-              {/* user 보내는 버튼 */}
-              <Button
-                type="button"
-                className="registerButton"
-                variant="contained"
-                onClick={() => userSignIn()}
-              >
-                가입하기
-              </Button>
-              <div className="underLine"></div>
-              <Button
-                className="loginRegisterButton"
-                onClick={handleLoginRoute}
-              >
-                이미 가입하셨나요?
-              </Button>
-            </form>
+      <Grid
+        container
+        sx={{
+          background:
+            "linear-gradient(rgba(137, 135, 135, 0.5), rgba(78, 76, 76, 0.3)), url('https://uibswiss.ch/wp-content/uploads/2016/01/00_Top-Travel-Trends-for-2018_209155915_06photo_FT.jpg')",
+          backgroundSize: "100%",
+        }}
+      >
+        <Grid item xs={7.5}>
+          <LeftSide />
+        </Grid>
+        <Grid item xs={4.5} sx={{ backgroundColor: "rgba(0,0,0,0.6)" }}>
+          <div className="registerBackground">
+            <Box
+              sx={{
+                backgroundColor: "rgba(188,	111,	241, 0.7)",
+                width: "16rem",
+                height: "60%",
+                borderRadius: "15px",
+                padding: "2rem",
+              }}
+            >
+              <div className="registerTitleContainer">
+                <Typography fontSize="1.6rem" color="white">
+                  REGISTER
+                </Typography>
+              </div>
+              <form className="registerForm">
+                {/* user 서식 */}
+                <TextField
+                  id="standard-basic"
+                  label="ID"
+                  variant="standard"
+                  margin="normal"
+                  size="small"
+                  onChange={(e) => {
+                    setUserId(e.target.value);
+                  }}
+                />
+                <TextField
+                  id="standard-basic"
+                  label="NICKNAME"
+                  variant="standard"
+                  margin="normal"
+                  size="small"
+                  onChange={(e) => {
+                    setUserNickname(e.target.value);
+                  }}
+                />
+                <TextField
+                  id="standard-basic"
+                  label="EMAIL"
+                  variant="standard"
+                  margin="normal"
+                  size="small"
+                  type="email"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+                <TextField
+                  id="standard-basic"
+                  label="PW"
+                  variant="standard"
+                  margin="normal"
+                  size="small"
+                  type="password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
+                {/* user 보내는 버튼 */}
+                <Box
+                  sx={{
+                    padding: "1rem",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Button
+                    type="button"
+                    className="registerButton"
+                    variant="outlined"
+                    sx={{
+                      padding: "0.5 rem, 1rem",
+                      marginRight: "0.5rem",
+                      color: "#892CDC",
+                      fontSize: "0.8rem",
+                      width: "4rem",
+                      background: "#DFBCFF",
+                      borderColor: "#892CDC",
+                      borderRadius: "0.6rem",
+                      ":hover": {
+                        background: "#ddd",
+                        color: "#892CDC",
+                        borderColor: "#892CDC",
+                      },
+                    }}
+                    onClick={() => userSignIn()}
+                  >
+                    JOIN
+                  </Button>
+                </Box>
+                <Button
+                  className="loginRegisterButton"
+                  onClick={handleLoginRoute}
+                  sx={{
+                    color: "white",
+                  }}
+                >
+                  이미 가입하셨나요?
+                </Button>
+              </form>
+            </Box>
           </div>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
       <Footer />
-    </Container>
+    </>
   );
 }

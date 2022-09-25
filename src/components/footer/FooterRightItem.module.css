@@ -1,0 +1,51 @@
+.memberItem {
+  padding-right: 1rem;
+}
+
+.memberItem a,
+.memberItem a:link,
+.memberItem a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.memberItem a:hover {
+  -webkit-animation: colorchange 3s infinite alternate;
+  animation: colorchange 3s infinite alternate;
+}
+
+@-webkit-keyframes colorchange {
+  0% {
+    color: black;
+  }
+
+  33% {
+    color: #52057b;
+  }
+
+  66% {
+    color: #bc6ff1;
+  }
+
+  100% {
+    color: #892cdc;
+  }
+}
+
+@keyframes colorchange {
+  0% {
+    color: black;
+  }
+
+  33% {
+    color: #52057b;
+  }
+
+  66% {
+    color: #bc6ff1;
+  }
+
+  100% {
+    color: #892cdc;
+  }
+}

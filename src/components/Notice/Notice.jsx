@@ -3,6 +3,7 @@ import axios from 'axios'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { BASE_URL } from '../../baseUrl'
 import Topbar from '../topbar/Topbar'
 
 const Notice = () => {
@@ -11,7 +12,7 @@ const Notice = () => {
     const [notice, setNotice] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:8080/post')
+        axios.get(BASE_URL+'/post')
         .then((response)=>{
             setNotice(response.data)
             console.log(notice);

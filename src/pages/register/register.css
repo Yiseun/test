@@ -4,29 +4,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)),
-    url("https://content.presspage.com/uploads/685/1920_2lsquorelaxuryrsquo.jpg?10000");
-  background-size: cover;
 }
 
-.registerContainer{
+.registerContainer {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 30px 65px 30px 65px;
   border-radius: 30px;
 }
 
-.registerWrapper{
+.registerWrapper {
   align-items: center;
 }
 
-.registerTitleIcon{
+.registerTitleIcon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.registerTitleContainer{
+.registerTitleContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,13 +35,4 @@
 .registerForm {
   display: flex;
   flex-direction: column;
-}
-
-.registerButton {
-  margin-top: 50px;
-  background-color: teal;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  text-align: center;
 }
