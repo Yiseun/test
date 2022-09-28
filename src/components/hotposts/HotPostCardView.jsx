@@ -48,19 +48,19 @@ const HotPostCardView = ({ handleRoute, view }) => {
     <CardContent>
       {view === "main" ? (
         <Grid container columnSpacing={5} rowSpacing={1} paddingX={2}>
-          {hotPosts.map((post) => (
+          {/* {hotPosts.map((post) => (
             <Grid item key={post.postId} md={4} xs={12}>
               <HotPost key={post.postId} post={post} handleRoute={handler} />
             </Grid>
-          ))}
+          ))} */}
         </Grid>
       ) : (
         <Grid container columnSpacing={5} rowSpacing={1} paddingX={2}>
-          {hotPosts.map((post) => (
+          {/* {hotPosts.map((post) => (
             <Grid item key={post.postId} xs={12}>
               <HotPost key={post.postId} post={post} handleRoute={handler} />
             </Grid>
-          ))}
+          ))} */}
         </Grid>
       )}
     </CardContent>
