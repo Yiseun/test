@@ -26,3 +26,7 @@ const STAY_IMG = [
 export const makeStayImg = () => {
   return STAY_IMG[Math.floor(Math.random() * STAY_IMG.length)];
 };
+
+export const makeOrderStayImg = (i) => {
+  return STAY_IMG[Math.floor(i % STAY_IMG.length)];
+};

@@ -1,24 +1,26 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const DashboardDetail = ({ regionAndCities }) => {
+const DashboardDetail = ({ handleBoard, setBoardId, city }) => {
+  const navigate = useNavigate();
+
+  function handler(props) {
+    navigate(`/board/${props}`);
+  }
+
   return (
     <Box sx={{ margin: "0.2rem", marginBottom: "0.8rem" }}>
-      <Typography
-        fontWeight="bold"
-        fontSize={16}
-        sx={{ marginBottom: "0.2rem" }}
+      <Box
+        sx={{ display: "flex" }}
+        onClick={() => {
+          handler(city.boardId);
+          setBoardId(city.boardId);
+          handleBoard();
+        }}
       >
-        {regionAndCities.region}
-      </Typography>
-      <Box sx={{ display: "flex" }}>
-        {regionAndCities.citiList.map((city, index) => {
-          if (index !== 0) {
-            return <CityComponent fontSizeNum="16">| {city}</CityComponent>;
-          }
-          return <CityComponent fontSizeNum="16">{city}</CityComponent>;
-        })}
+        <CityComponent>{city.boardName}</CityComponent>
       </Box>
     </Box>
   );

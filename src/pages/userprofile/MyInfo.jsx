@@ -1,27 +1,28 @@
-import { Avatar, Grid, Typography } from "@mui/material";
+import { Avatar, Box, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 
 const MyInfo = ({ user }) => {
   return (
-    <Grid container>
-      <Grid item xs="3" sx={{ paddingLeft: 5 }}>
+    <Box sx={{ display: "flex" }}>
+      <Stack sx={{ paddingRight: "50px", paddingLeft: "20px" }}>
         <Avatar
           alt="Profile IMG"
-          src="https://avatars.githubusercontent.com/u/90738604?v=4"
-          sx={{ width: 100, height: 100 }}
+          src={user.profileImg}
+          borderRadius="2rem"
+          sx={{
+            width: 100,
+            height: 100,
+          }}
         />
-      </Grid>
-      <Grid item xs="9">
+      </Stack>
+      <Stack sx={{ padding: "10px" }}>
         <Typography variant="body1" component="p">
           <Typography component="p">ID : {user.username}</Typography>
           <Typography component="p">NICKNAME : {user.nickname}</Typography>
           <Typography component="p">EMAIL : {user.email}</Typography>
-          <Typography component="p">
-            DESCRIPTION : {user.description}
-          </Typography>
         </Typography>
-      </Grid>
-    </Grid>
+      </Stack>
+    </Box>
   );
 };
 

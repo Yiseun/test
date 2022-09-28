@@ -16,14 +16,13 @@ const DashboardMyInfo = ({ page }) => {
     { thisPage: "EDIT", handlerUrl: "update" },
     { thisPage: "MY POST", handlerUrl: "myposts" },
     { thisPage: "MY POST LIKE", handlerUrl: "mylikes" },
-    { thisPage: "MY REPLY", handlerUrl: "myreply" },
   ];
 
   const likesCategories = [
-    { thisPage: "STAY", handlerUrl: "profile" },
-    { thisPage: "ATTRACTION", handlerUrl: "profile" },
-    { thisPage: "TRAIN", handlerUrl: "profile" },
-    { thisPage: "RENTCAR", handlerUrl: "profile" },
+    { thisPage: "STAY", handlerUrl: "staylike" },
+    { thisPage: "ATTRACTION", handlerUrl: "attractionlike" },
+    { thisPage: "TRAIN", handlerUrl: "attractionlike" },
+    { thisPage: "RENTCAR", handlerUrl: "rentcarlike" },
   ];
 
   return (

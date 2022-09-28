@@ -21,7 +21,7 @@ import axios from "axios";
 import { useState } from "react";
 import DashboardCommunity from "../../components/dashboardcommunity/DashboardCommunity";
 import usePagination from "../../components/Pagination";
-import Post from "./Post";
+import Post from "../userprofile/Post";
 import PostListOutLine from "./PostListOutLine";
 import PostColumn from "./PostColumn";
 import PostSearch from "./PostSearch";
@@ -49,102 +49,30 @@ const Community = () => {
   const navigate = useNavigate();
 
   // handlePosting
-  const handlePosting = () => {
+  function handlePosting(boardId) {
     {
       localStorage.getItem("token") == null
         ? navigate("/board")
-        : navigate("/posting");
+        : navigate("/posting", {
+            state: {
+              boardId: boardId,
+            },
+          });
     }
-  };
+  }
 
   // 게시글 전체 가져오기
 
-  const [posts, setPosts] = useState([
-    {
-      postId: 1,
-      title: "제목입니다.",
-      replyList: [1, 1, 1, 1, 1, 1],
-      nickname: "김김김",
-      likeCount: 10,
-      readCount: 5,
-    },
-    {
-      postId: 1,
-      title: "제목입니다.",
-      replyList: [1, 1, 1, 1, 1, 1],
-      nickname: "김김김",
-      likeCount: 10,
-      readCount: 5,
-    },
-    {
-      postId: 1,
-      title: "제목입니다.",
-      replyList: [1, 1, 1, 1, 1, 1],
-      nickname: "김김김",
-      likeCount: 10,
-      readCount: 5,
-    },
-    {
-      postId: 1,
-      title: "제목입니다.",
-      replyList: [1, 1, 1, 1, 1, 1],
-      nickname: "김김김",
-      likeCount: 10,
-      readCount: 5,
-    },
-    {
-      postId: 1,
-      title: "제목입니다.",
-      replyList: [1, 1, 1, 1, 1, 1],
-      nickname: "김김김",
-      likeCount: 10,
-      readCount: 5,
-    },
-    {
-      postId: 1,
-      title: "제목입니다.",
-      replyList: [1, 1, 1, 1, 1, 1],
-      nickname: "김김김",
-      likeCount: 10,
-      readCount: 5,
-    },
-    {
-      postId: 1,
-      title: "제목입니다.",
-      replyList: [1, 1, 1, 1, 1, 1],
-      nickname: "김김김",
-      likeCount: 10,
-      readCount: 5,
-    },
-    {
-      postId: 1,
-      title: "제목입니다.",
-      replyList: [1, 1, 1, 1, 1, 1],
-      nickname: "김김김",
-      likeCount: 10,
-      readCount: 5,
-    },
-    {
-      postId: 1,
-      title: "제목입니다.",
-      replyList: [1, 1, 1, 1, 1, 1],
-      nickname: "김김김",
-      likeCount: 10,
-      readCount: 5,
-    },
-    {
-      postId: 1,
-      title: "제목입니다.",
-      replyList: [1, 1, 1, 1, 1, 1],
-      nickname: "김김김",
-      likeCount: 10,
-      readCount: 5,
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
+  function postsAllBoard() {
     axios
-      .get(BASE_URL + "/api/post")
+      .get(`${BASE_URL}/api/post`, {
+        headers: {
+          Authorization: `${localStorage.getItem("token")}`,
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      })
       .then((response) => {
         console.log(response.data);
         setPosts(response.data.reverse());
@@ -167,7 +95,49 @@ const Community = () => {
         }
         console.log(error.config);
       });
+  }
+
+  // 게시판에 맞는 게시글만 가져오기
+  async function postsByBoard(props) {
+    axios
+      .get(`${BASE_URL}/api/auth/v1/board/${props}`, {
+        headers: {
+          Authorization: `${localStorage.getItem("token")}`,
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        const tmpData = response.data.postDTOList;
+
+        Promise.all(
+          tmpData.map(async (post) => {
+            return await axios.get(`${BASE_URL}/api/auth/v1/post/${post}`, {
+              headers: {
+                Authorization: `${localStorage.getItem("token")}`,
+                "Content-Type": "application/json; charset=UTF-8",
+              },
+            });
+          })
+        ).then((res) => {
+          console.log(res);
+          const tmpArray = res.map((postdata) => postdata.data);
+
+          setPosts(tmpArray.reverse());
+          console.log(posts);
+        });
+      });
+  }
+
+  useEffect((props) => {
+    postsByBoard(props);
   }, []);
+
+  function handleBoard(props) {
+    postsByBoard(props);
+  }
+
+  const [boardId, setBoardId] = useState(2);
 
   // useLocation 으로 postDetail 에 보내기.
   function handlePostDetail(props) {
@@ -194,7 +164,12 @@ const Community = () => {
       <Container maxWidth="lg">
         <Header />
         <Box display="flex">
-          <DashboardCommunity />
+          <DashboardCommunity
+            handleBoard={() => {
+              handleBoard(boardId);
+            }}
+            setBoardId={setBoardId}
+          />
           <PostListOutLine>
             <Box
               sx={{
@@ -204,11 +179,13 @@ const Community = () => {
                 paddingBottom: "1rem",
               }}
             >
-              <PostSearch />
+              <PostSearch boardId={boardId} setPosts={setPosts} />
               <Button
                 variant="none"
                 className="communityPostingButton"
-                onClick={handlePosting}
+                onClick={() => {
+                  handlePosting(boardId);
+                }}
                 sx={{ margin: "3px", color: "#892CDC", borderRadius: "1rem" }}
               >
                 글쓰기

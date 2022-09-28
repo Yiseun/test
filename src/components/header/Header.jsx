@@ -22,6 +22,8 @@ import PlannerGramLogo from "./PlannerGramLogo";
 import Search from "./Search";
 import Board from "./Board";
 import ModalButton from "./ModalButton";
+import jwt_decode from "jwt-decode";
+import { makeOrderProfileImg } from "../../image/profileImg";
 
 const Header = () => {
   const theme = createTheme({
@@ -72,6 +74,10 @@ const Header = () => {
     navigate("/user/profile");
   };
 
+  const handleUserMyPosts = () => {
+    navigate("/user/myposts");
+  };
+
   const [isToggled, setIsToggled] = useState(false);
   const [userToggled, setUserToggled] = useState(false);
 
@@ -83,6 +89,17 @@ const Header = () => {
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
+        sx={{
+          position: "sticky",
+          top: "10px",
+          zIndex: 3,
+          background: "#e2d0ef",
+          width: "100%",
+          borderRadius: "1rem",
+          margin: "auto",
+          marginTop: "10px",
+          marginBottom: "10px",
+        }}
       >
         <Box>
           {/* 로고 */}
@@ -144,7 +161,7 @@ const Header = () => {
                   </ModalButton>
                   <ModalButton
                     onClick={() => {
-                      handleRoute("search");
+                      handleRoute("search/stay");
                     }}
                   >
                     SEARCH
@@ -173,7 +190,9 @@ const Header = () => {
                       <ModalButton onClick={handleUserProfile}>
                         MY INFO
                       </ModalButton>
-                      <ModalButton onClick={handleClose}>MY POSTS</ModalButton>
+                      <ModalButton onClick={handleUserMyPosts}>
+                        MY POSTS
+                      </ModalButton>
                       <ModalButton
                         onClick={() => {
                           logOutClick();
@@ -209,7 +228,7 @@ const Header = () => {
             />
             <Search
               onClick={() => {
-                handleRoute("search");
+                handleRoute("search/stay");
               }}
             />
           </Box>
@@ -234,7 +253,9 @@ const Header = () => {
                 >
                   <img
                     className="topImg"
-                    src="https://avatars.githubusercontent.com/u/102516088?v=4"
+                    src={makeOrderProfileImg(
+                      jwt_decode(localStorage.getItem("token")).id
+                    )}
                     alt=""
                   />
                 </Button>
@@ -257,7 +278,7 @@ const Header = () => {
                     }}
                   >
                     <MenuItem onClick={handleUserProfile}>내 정보</MenuItem>
-                    <MenuItem onClick={handleClose}>내가 쓴 글</MenuItem>
+                    <MenuItem onClick={handleUserMyPosts}>내가 쓴 글</MenuItem>
                     <MenuItem
                       onClick={() => {
                         logOutClick();

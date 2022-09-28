@@ -2,10 +2,15 @@ import { Card, CardMedia, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import Wrapper from "./Wrapper";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const RightSide = ({
   stayAddress,
+  setStayLikeCount,
+  handleLikeClick,
   stayLikeCount,
+  likeClick,
   stayName,
   stayPrice,
   stayCheckin,
@@ -19,9 +24,40 @@ const RightSide = ({
         fontSize={22}
         fontWeight="bold"
         marginRight="1rem"
+        display="flex"
+        alignItems="center"
       >
         {stayName}
+        <Box
+          marginLeft="5px"
+          onClick={handleLikeClick}
+          display="flex"
+          alignItems="center"
+        >
+          {likeClick ? (
+            <Box display="flex" alignItems="center">
+              <FavoriteIcon
+                color="info"
+                onClick={() => {
+                  setStayLikeCount(stayLikeCount - 1);
+                }}
+              />
+              <Typography margin="5px">{stayLikeCount + 1}</Typography>
+            </Box>
+          ) : (
+            <Box display="flex" alignItems="center">
+              <FavoriteBorderIcon
+                color="info"
+                onClick={() => {
+                  setStayLikeCount(stayLikeCount + 1);
+                }}
+              />
+              <Typography margin="5px">{stayLikeCount}</Typography>
+            </Box>
+          )}
+        </Box>
       </Typography>
+
       <Card
         variant="outlined"
         sx={{

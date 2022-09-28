@@ -37,6 +37,8 @@ const Post = ({ post, handlePostDetail }) => {
             }}
           >
             {post.replyList.length}
+            {/* 게시글 전체 조회 api 로 조회하면 replyList 로 받고
+            게시글 번호로 조회해서 해당 게시글만 조회하면 replys 로 받고 */}
           </TextProperty>
         </Grid>
         <Grid item xs={2}>

@@ -23,3 +23,7 @@ const ATTRACTION_IMG = [
 export const makeAttractionImg = () => {
   return ATTRACTION_IMG[Math.floor(Math.random() * ATTRACTION_IMG.length)];
 };
+
+export const makeOrderAttractionImg = (i) => {
+  return ATTRACTION_IMG[Math.floor(i % ATTRACTION_IMG.length)];
+};

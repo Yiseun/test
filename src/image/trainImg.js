@@ -1,5 +1,5 @@
 const TRAIN_IMG =
-  "http://www.mcnews.co.kr/imgdata/mcnews_kr/201405/20140530_102706_2f24635.jpg";
+  "https://cphoto.asiae.co.kr/listimglink/6/2011072016343203580_2.jpg";
 
 export const makeTrainImg = () => {
   return TRAIN_IMG;

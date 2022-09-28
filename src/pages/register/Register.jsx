@@ -37,7 +37,7 @@ export default function Register() {
   function userSignIn() {
     axios
       .post(
-        BASE_URL + "/all/v1/register",
+        BASE_URL + "/api/v1/register",
         {
           username: userId,
           password: password,

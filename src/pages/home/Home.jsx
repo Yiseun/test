@@ -1,30 +1,55 @@
-import React from 'react'
-import Featured from '../../components/featured/Featured'
-import Searchbar from '../../components/searchbar/Searchbar'
-import HotPost from '../../components/hotpost/HotPost'
-import Footer from '../../components/footer/Footer'
-import { Container, createTheme, ThemeProvider } from '@mui/material'
-import Header from '../../components/header/Header'
-
-
+import React from "react";
+import Featured from "../../components/featured/Featured";
+import Searchbar from "../../components/searchbar/Searchbar";
+import Footer from "../../components/footer/Footer";
+import { Container, createTheme, ThemeProvider } from "@mui/material";
+import Header from "../../components/header/Header";
+import HotArticle from "../../components/hotposts/HotPostCardView";
+import HotAttraction from "../../components/hotattraction/HotAttraction";
+import Wrapper from "./Wrapper";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const theme = createTheme
-  
-
+  const navigate = useNavigate();
+  const handleRoute = (props) => {
+    navigate(`/${props}`);
+  };
 
   return (
+    <Container maxWidth="xl">
+      <Header />
       <Container maxWidth="lg">
-        <Header/>
         <div className="homeContainer">
-            <Featured/>
-            <Searchbar/>
-            <h1 className="homeTitle"></h1>
-            <HotPost/>
+          <Featured />
+          <Wrapper
+            title="HOT POST"
+            linkHandler={() => {
+              handleRoute("board");
+            }}
+          >
+            <HotArticle handleRoute={handleRoute} view="main" />
+          </Wrapper>
+          <Wrapper
+            title="HOT ATTRACTION"
+            linkHandler={() => {
+              handleRoute("search/attraction");
+            }}
+          >
+            <HotAttraction
+              handleRoute={(attractionId) => {
+                navigate(`/attraction/${attractionId}`, {
+                  state: {
+                    attractionId: attractionId,
+                  },
+                });
+              }}
+            />
+          </Wrapper>
         </div>
-        <Footer/>
+        <Footer />
       </Container>
-  )
-}
+    </Container>
+  );
+};
 
-export default Home
+export default Home;

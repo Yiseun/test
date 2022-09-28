@@ -25,3 +25,6 @@ const PROFILE_IMG = [
 export const makeProfileImg = () => {
   return PROFILE_IMG[Math.floor(Math.random() * PROFILE_IMG.length)];
 };
+export const makeOrderProfileImg = (i) => {
+  return PROFILE_IMG[Math.floor(i % PROFILE_IMG.length)];
+};

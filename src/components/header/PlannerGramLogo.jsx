@@ -5,7 +5,7 @@ const PlannerGramLogo = ({ handleHome }) => {
   return (
     <Button id="basic-button" sx={{ borderRadius: "2rem" }} color="secondary">
       <img
-        src="https://github.com/Manidle/final-front/blob/develop/public/image/logo.png?raw=true"
+        src="https://github.com/Manidle/final-front/blob/develop/public/logo.png?raw=true"
         alt="logo"
         className="logo"
         height="50px"

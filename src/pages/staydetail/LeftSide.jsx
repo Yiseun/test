@@ -12,6 +12,7 @@ const LeftSide = ({ imgUrl, stayPrice, stayName }) => {
         margin: 0,
         borderRadius: "1rem",
         padding: 0,
+        height: "100%",
       }}
     >
       <Box>
@@ -59,7 +60,12 @@ const LeftSide = ({ imgUrl, stayPrice, stayName }) => {
             </Wrapper>
             <Wrapper marginSize="0.3rem" bgColor="#C1C1C1">
               <TextProperty fontColor="white" fontSize="16" fontWeight="normal">
-                예약하기
+                <a
+                  style={{ textDecoration: "none", color: "white" }}
+                  href="https://www.goodchoice.kr/"
+                >
+                  예약하기
+                </a>
               </TextProperty>
             </Wrapper>
           </Wrapper>

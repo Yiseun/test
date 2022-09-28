@@ -8,6 +8,7 @@ const DashboardDetail = ({ handler, currentPage, thisPage }) => {
         color="#892CDC"
         className="dashboardDetail"
         onClick={() => handler()}
+        fontWeight="bold"
       >
         {thisPage}
       </Typography>

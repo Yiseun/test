@@ -1,42 +1,46 @@
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const contents = [
-  { title: "경주를 엄청나게 잘 놀고왔어용", date: "2022.03.21" },
-  { title: "부산을 엄청나게 잘 놀고왔어용", date: "2022.03.22" },
-  { title: "인천을 엄청나게 잘 놀고왔어용", date: "2022.03.23" },
-];
+const Post = ({ post }) => {
+  const navigate = useNavigate();
 
-const Post = ({ content }) => {
   return (
     <Box
+      onClick={() =>
+        navigate(`/post/${post.postId}`, {
+          state: {
+            postId: post.postId,
+          },
+        })
+      }
       sx={{
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
       }}
     >
-      <Typography paddingLeft={5}>{content.title}</Typography>
-      <Typography paddingRight={5}>{content.date}</Typography>
+      <Typography paddingLeft={5}>{post.title}</Typography>
+      <Typography paddingRight={5}>{post.boardName}</Typography>
     </Box>
   );
 };
 
-const PostList = ({ contents }) => {
+const PostList = ({ posts }) => {
   return (
     <div>
-      {contents.map((content) => (
-        <Post content={content} />
+      {posts.map((post, i) => (
+        <Post post={post} />
       ))}
     </div>
   );
 };
 
-const MyPostAndLike = () => {
+const MyPostAndLike = ({ posts }) => {
   return (
     <Typography variant="body1" component="p">
-      <PostList contents={contents} />
+      <PostList posts={posts} />
     </Typography>
   );
 };
